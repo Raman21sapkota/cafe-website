@@ -117,13 +117,13 @@ const experiences = [
 
 function ExperiencesSection() {
   return (
-    <section className="py-32 md:py-48 bg-bg-primary">
+    <section className="pt-20 md:pt-24 pb-32 md:pb-48 bg-bg-primary">
       <div className="mx-auto px-8 md:px-16" style={{ maxWidth: "1400px" }}>
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-24"
+          className="mb-14"
         >
           <motion.p variants={fadeUp} custom={0} className="text-accent-brass text-sm font-medium tracking-[0.02em] mb-4">
             Our Offerings
@@ -379,7 +379,7 @@ export default function Home() {
     <>
       <HeroSection />
 
-      <section className="pt-20 md:pt-28 pb-8 md:pb-12 bg-bg-primary text-center">
+      <section className="pt-20 md:pt-28 pb-0 bg-bg-primary text-center">
         <div className="mx-auto px-8 md:px-16" style={{ maxWidth: "1400px" }}>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
