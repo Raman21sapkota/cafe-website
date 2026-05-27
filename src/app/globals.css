@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@import "@fontsource/cormorant-garamond/700.css";
+@import "@fontsource/cormorant-garamond/600.css";
+@import "@fontsource/cormorant-garamond/500.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+
+@theme inline {
+  --color-bg-primary: #EBE0CE;
+  --color-bg-soft: #FBF8F3;
+  --color-bg-warm: #EFE6D8;
+  --color-olive-primary: #66785F;
+  --color-olive-dark: #495445;
+  --color-olive-soft: #7A8B72;
+  --color-sand: #DCCDB8;
+  --color-stone: #B7A58A;
+  --color-linen: #E7DED0;
+  --color-text-primary: #1D1D1D;
+  --color-text-soft: #4E4A45;
+  --color-text-muted: #6E6A64;
+  --color-accent-brass: #B89B72;
+  --color-accent-gold-soft: #C7AA7A;
+
+  --font-heading: "Cormorant Garamond", "Playfair Display", serif;
+  --font-body: "Inter", "Manrope", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-olive-primary);
+  color: white;
+}
