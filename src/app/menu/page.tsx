@@ -306,7 +306,7 @@ export default function Menu() {
             </button>
             <button onClick={() => scrollTo("breakfast")}
               className="px-6 py-2.5 text-sm font-medium tracking-[0.02em] rounded-full bg-olive-primary text-bg-primary hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(102,120,95,0.18)] transition-all duration-500">
-              Foods
+              Food
             </button>
           </div>
 
