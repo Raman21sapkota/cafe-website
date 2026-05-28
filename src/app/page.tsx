@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useSyncExternalStore } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 
@@ -26,14 +26,13 @@ const scaleIn = {
 
 function HeroSection() {
   const ref = useRef(null);
-  const isMobile = useSyncExternalStore(
-    (cb) => { const mq = window.matchMedia("(max-width: 767px)"); mq.addEventListener("change", cb); return () => mq.removeEventListener("change", cb); },
-    () => window.matchMedia("(max-width: 767px)").matches,
-    () => true
-  );
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, 200]);
-  const scale = useTransform(scrollYProgress, [0, 1], isMobile ? [1, 1] : [1, 1.06]);
+
+  const yRange = typeof window !== "undefined" && window.innerWidth < 768 ? [0, 0] : [0, 200];
+  const scaleRange = typeof window !== "undefined" && window.innerWidth < 768 ? [1, 1] : [1, 1.06];
+
+  const y = useTransform(scrollYProgress, [0, 1], yRange);
+  const scale = useTransform(scrollYProgress, [0, 1], scaleRange);
 
   return (
     <section ref={ref} className="relative h-screen h-dvh overflow-hidden">
@@ -43,7 +42,12 @@ function HeroSection() {
       }} />
 
       <motion.div style={{ y, scale }} className="absolute inset-0">
-        <img src="/assets/hero-bg.jpg" alt="" className="w-full h-full object-cover object-[center_30%]" />
+        <img
+          src="/assets/hero-bg.jpg"
+          alt=""
+          className="w-full h-full object-cover"
+          style={{ objectPosition: "50% 30%" }}
+        />
         <div className="absolute inset-0" style={{
           background: "linear-gradient(135deg, rgba(102,120,95,0.2) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.35) 100%)"
         }} />
