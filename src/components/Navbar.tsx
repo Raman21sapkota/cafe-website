@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useLayoutEffect, startTransition } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -97,35 +98,41 @@ export default function Navbar() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 bg-bg-primary z-40 flex flex-col items-center justify-center gap-10"
-          >
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-3xl font-heading tracking-[0.02em] ${
-                  pathname === item.href ? "text-accent-brass" : "text-text-primary"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Link
-              href="/contact"
-              className="px-8 py-4 bg-olive-primary text-bg-primary text-sm font-medium tracking-[0.02em] rounded-full"
+      {typeof window !== "undefined" && createPortal(
+        <AnimatePresence>
+          {mobileOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              style={{ zIndex: 45 }}
+              className="fixed inset-0 bg-bg-primary flex flex-col items-center justify-center gap-10 md:hidden"
             >
-              Reservations
-            </Link>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className={`text-3xl font-heading tracking-[0.02em] ${
+                    pathname === item.href ? "text-accent-brass" : "text-text-primary"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Link
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="px-8 py-4 bg-olive-primary text-bg-primary text-sm font-medium tracking-[0.02em] rounded-full"
+              >
+                Reservations
+              </Link>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </header>
   );
 }
