@@ -74,13 +74,13 @@ export default function Navbar() {
         </nav>
 
         <button
-          className="md:hidden relative z-10 w-8 h-8 flex flex-col items-center justify-center gap-1.5 max-md:bg-black/30 max-md:rounded max-md:p-1.5"
+          className="md:hidden relative z-10 w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-md bg-black/40 backdrop-blur-sm"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          <span className={`block w-6 h-[1.5px] transition-all duration-300 ${mobileOpen ? "bg-text-primary rotate-45 translate-y-[3.5px]" : scrolled ? "bg-text-primary" : "bg-white/80"}`} />
-          <span className={`block w-6 h-[1.5px] transition-all duration-300 ${mobileOpen ? "opacity-0 bg-text-primary" : scrolled ? "bg-text-primary" : "bg-white/80"}`} />
-          <span className={`block w-6 h-[1.5px] transition-all duration-300 ${mobileOpen ? "bg-text-primary -rotate-45 -translate-y-[3.5px]" : scrolled ? "bg-text-primary" : "bg-white/80"}`} />
+          <span className={`block w-5 h-[1.5px] bg-white transition-all duration-300 ${mobileOpen ? "rotate-45 translate-y-[3.5px]" : ""}`} />
+          <span className={`block w-5 h-[1.5px] bg-white transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
+          <span className={`block w-5 h-[1.5px] bg-white transition-all duration-300 ${mobileOpen ? "-rotate-45 -translate-y-[3.5px]" : ""}`} />
         </button>
       </div>
 
