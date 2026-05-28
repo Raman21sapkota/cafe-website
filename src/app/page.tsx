@@ -269,66 +269,26 @@ function MenuPreviewSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-20 max-w-2xl"
+          className="text-center"
         >
           <motion.p variants={fadeUp} custom={0} className="text-accent-brass text-sm font-medium tracking-[0.02em] mb-4">
             Our Menu
           </motion.p>
           <motion.h2 variants={fadeUp} custom={1} className="font-heading text-[clamp(2.5rem,5vw,5rem)] leading-[1] tracking-[-0.03em] text-text-primary mb-6">
-            Breakfast, lunch & dinner
+            Breakfast, lunch & drinks
           </motion.h2>
-          <motion.p variants={fadeUp} custom={2} className="text-text-muted text-base md:text-lg leading-[1.8] tracking-[-0.01em]">
-            From morning coffee to evening dining — explore our menus.
+          <motion.p variants={fadeUp} custom={2} className="text-text-muted text-base md:text-lg leading-[1.8] tracking-[-0.01em] mb-10 max-w-md mx-auto">
+            From morning coffee to evening dining — explore our full menu.
           </motion.p>
+          <motion.div variants={fadeUp} custom={3}>
+            <Link
+              href="/menu"
+              className="inline-flex items-center gap-2 px-10 py-4 bg-olive-primary text-bg-primary text-sm font-medium tracking-[0.02em] rounded-full hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(102,120,95,0.18)] transition-all duration-500"
+            >
+              See Menu
+            </Link>
+          </motion.div>
         </motion.div>
-
-        <div className="max-w-3xl">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="border-t border-black/10 py-10 flex flex-col md:flex-row md:items-end justify-between gap-6"
-          >
-            <motion.div variants={fadeUp} custom={0}>
-              <p className="text-accent-brass text-sm font-medium tracking-[0.02em] mb-2">Daytime</p>
-              <h3 className="font-heading text-[clamp(1.75rem,3vw,3rem)] leading-[1] tracking-[-0.03em] text-text-primary">Breakfast & Lunch</h3>
-              <p className="text-text-muted text-sm mt-2">Served daily from 7am</p>
-            </motion.div>
-            <motion.div variants={fadeUp} custom={1}>
-              <a
-                href="https://platedcafe.com.au/data/files/plated_menu_new_a4_bf_l_drinks_2411.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-olive-primary text-bg-primary text-sm font-medium tracking-[0.02em] rounded-full hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(102,120,95,0.18)] transition-all duration-500"
-              >
-                Download Menu
-              </a>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="border-t border-black/10 py-10 flex flex-col md:flex-row md:items-end justify-between gap-6"
-          >
-            <motion.div variants={fadeUp} custom={0}>
-              <p className="text-accent-brass text-sm font-medium tracking-[0.02em] mb-2">Evening</p>
-              <h3 className="font-heading text-[clamp(1.75rem,3vw,3rem)] leading-[1] tracking-[-0.03em] text-text-primary">Dinner Menu</h3>
-              <p className="text-text-muted text-sm mt-2">Evening service from 5:30pm</p>
-            </motion.div>
-            <motion.div variants={fadeUp} custom={1}>
-              <a
-                href="https://platedcafe.com.au/data/files/dinnermenuplated1.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-olive-primary text-bg-primary text-sm font-medium tracking-[0.02em] rounded-full hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(102,120,95,0.18)] transition-all duration-500"
-              >
-                Download Menu
-              </a>
-            </motion.div>
-          </motion.div>
-        </div>
       </div>
     </section>
   );

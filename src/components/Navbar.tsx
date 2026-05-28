@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, startTransition } from "react";
+import { useState, useEffect, useLayoutEffect, startTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,8 +17,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    setScrolled(false);
     startTransition(() => setMobileOpen(false));
   }, [pathname]);
 
@@ -39,7 +41,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between px-8 md:px-16 py-4 mx-auto" style={{ maxWidth: "1400px" }}>
         <div className="w-8" />
 
-        <nav className={`hidden md:flex items-center gap-10 transition-opacity duration-500 ${scrolled ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+        <nav className={`hidden md:flex items-center gap-10 transition-opacity duration-500 ${isHome && !scrolled ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
           {navItems.map((item) => (
             <Link
               key={item.href}
