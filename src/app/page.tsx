@@ -37,19 +37,8 @@ function HeroSection() {
         backgroundSize: "256px 256px",
       }} />
 
-      <motion.div
-        style={{
-          y: typeof window !== "undefined" && window.innerWidth < 768 ? 0 : y,
-          scale,
-        }}
-        className="absolute inset-0"
-      >
-        <img
-          src="/assets/hero-bg.jpg"
-          alt=""
-          className="w-full h-full object-cover"
-          style={{ objectPosition: "50% 30%" }}
-        />
+      <motion.div style={{ y, scale }} className="absolute inset-0 max-md:![transform:none]">
+        <img src="/assets/hero-bg.jpg" alt="" className="w-full h-full object-cover object-[center_30%]" />
         <div className="absolute inset-0" style={{
           background: "linear-gradient(135deg, rgba(102,120,95,0.2) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.35) 100%)"
         }} />

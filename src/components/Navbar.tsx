@@ -91,7 +91,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="fixed inset-0 bg-bg-primary z-0 flex flex-col items-center justify-center gap-10"
+            className="fixed inset-0 bg-bg-primary z-40 flex flex-col items-center justify-center gap-10"
           >
             {navItems.map((item) => (
               <Link
