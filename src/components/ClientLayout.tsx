@@ -13,6 +13,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     lenisRef.current = lenis;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (window as any).__lenis = lenis;
 
     function raf(time: number) {

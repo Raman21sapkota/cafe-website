@@ -20,8 +20,10 @@ export default function Navbar() {
   const isHome = pathname === "/";
 
   useLayoutEffect(() => {
-    setScrolled(false);
-    startTransition(() => setMobileOpen(false));
+    startTransition(() => {
+      setScrolled(false);
+      setMobileOpen(false);
+    });
   }, [pathname]);
 
   useEffect(() => {
@@ -29,6 +31,13 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const lenis = (window as any).__lenis;
+    if (!lenis) return;
+    mobileOpen ? lenis.stop() : lenis.start();
+  }, [mobileOpen]);
 
   return (
     <header
