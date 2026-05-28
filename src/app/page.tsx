@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 
@@ -26,9 +26,11 @@ const scaleIn = {
 
 function HeroSection() {
   const ref = useRef(null);
+  const [isMobile, setIsMobile] = useState(true);
+  useEffect(() => { setIsMobile(window.innerWidth < 768); }, []);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
+  const y = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, 200]);
+  const scale = useTransform(scrollYProgress, [0, 1], isMobile ? [1, 1] : [1, 1.06]);
 
   return (
     <section ref={ref} className="relative h-screen h-dvh overflow-hidden">
@@ -37,7 +39,7 @@ function HeroSection() {
         backgroundSize: "256px 256px",
       }} />
 
-      <motion.div style={{ y, scale }} className="absolute inset-0 max-md:![transform:none]">
+      <motion.div style={{ y, scale }} className="absolute inset-0">
         <img src="/assets/hero-bg.jpg" alt="" className="w-full h-full object-cover object-[center_30%]" />
         <div className="absolute inset-0" style={{
           background: "linear-gradient(135deg, rgba(102,120,95,0.2) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.35) 100%)"

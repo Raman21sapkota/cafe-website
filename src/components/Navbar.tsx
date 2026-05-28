@@ -3,7 +3,7 @@
 import { useState, useEffect, useLayoutEffect, startTransition } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -17,6 +17,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const isHome = pathname === "/";
 
   useLayoutEffect(() => {
@@ -49,7 +50,19 @@ export default function Navbar() {
       }`}
     >
       <div className="flex items-center justify-between px-8 md:px-16 py-4 mx-auto" style={{ maxWidth: "1400px" }}>
-        <div className="w-8" />
+        {isHome ? (
+          <div className="w-8" />
+        ) : (
+          <button
+            onClick={() => router.back()}
+            className="group inline-flex items-center gap-1.5 text-text-muted hover:text-accent-brass text-sm font-bold tracking-[0.02em] transition-colors duration-300"
+          >
+            <svg className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back
+          </button>
+        )}
 
         <nav className={`hidden md:flex items-center gap-10 transition-opacity duration-500 ${isHome && !scrolled ? "opacity-0 pointer-events-none" : "opacity-100"}`}>
           {navItems.map((item) => (
@@ -74,7 +87,7 @@ export default function Navbar() {
         </nav>
 
         <button
-          className="md:hidden relative z-10 w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-md bg-black/40 backdrop-blur-sm"
+          className="md:hidden relative z-50 w-10 h-10 flex flex-col items-center justify-center gap-1.5 rounded-md bg-black/40 backdrop-blur-sm"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
