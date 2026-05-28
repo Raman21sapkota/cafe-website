@@ -71,7 +71,7 @@ export default function Navbar() {
         </nav>
 
         <button
-          className="md:hidden relative z-10 w-8 h-8 flex flex-col items-center justify-center gap-1.5"
+          className="md:hidden relative z-10 w-8 h-8 flex flex-col items-center justify-center gap-1.5 max-md:bg-black/30 max-md:rounded max-md:p-1.5"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >

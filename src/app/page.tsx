@@ -38,7 +38,7 @@ function HeroSection() {
       }} />
 
       <motion.div style={{ y, scale }} className="absolute inset-0">
-        <img src="/assets/hero-bg.jpg" alt="" className="w-full h-full object-cover" />
+        <img src="/assets/hero-bg.jpg" alt="" className="w-full h-full object-cover" style={{ objectPosition: "center top" }} />
         <div className="absolute inset-0" style={{
           background: "linear-gradient(135deg, rgba(102,120,95,0.2) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.35) 100%)"
         }} />
@@ -52,14 +52,14 @@ function HeroSection() {
             transition={{ duration: 1.2, delay: 0.2, ease: easeOut }}
             className="mb-12"
           >
-            <img src="/assets/logo.png" alt="Plated Cafe" className="h-20 md:h-28 w-auto mx-auto opacity-90 rounded-xl" />
+            <img src="/assets/logo.png" alt="Plated Cafe" className="max-md:w-[100px] max-md:h-[100px] h-20 md:h-28 w-auto mx-auto opacity-90 rounded-xl" />
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.4, ease: easeOut }}
-            className="font-heading text-[clamp(2.5rem,7vw,6rem)] leading-[0.92] tracking-[-0.03em] font-medium text-white"
+            className="font-heading text-[clamp(2rem,8vw,5rem)] leading-[0.92] tracking-[-0.03em] font-medium text-white"
           >
             Plated Cafe
             <br />
@@ -83,7 +83,7 @@ function HeroSection() {
           >
             <Link
               href="/menu"
-              className="inline-block px-10 py-4 bg-bg-soft text-text-primary text-sm font-medium tracking-[0.02em] rounded-full hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-all duration-500"
+              className="inline-block max-md:min-h-[48px] max-md:px-8 max-md:py-3.5 px-10 py-4 bg-bg-soft text-text-primary text-sm font-medium tracking-[0.02em] rounded-full hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.12)] transition-all duration-500"
             >
               See Menu
             </Link>
