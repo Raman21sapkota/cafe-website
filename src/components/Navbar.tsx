@@ -33,10 +33,8 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const lenis = (window as any).__lenis;
-    if (!lenis) return;
-    mobileOpen ? lenis.stop() : lenis.start();
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
   return (
