@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useSyncExternalStore } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 
@@ -26,8 +26,11 @@ const scaleIn = {
 
 function HeroSection() {
   const ref = useRef(null);
-  const [isMobile, setIsMobile] = useState(true);
-  useEffect(() => { setIsMobile(window.innerWidth < 768); }, []);
+  const isMobile = useSyncExternalStore(
+    (cb) => { const mq = window.matchMedia("(max-width: 767px)"); mq.addEventListener("change", cb); return () => mq.removeEventListener("change", cb); },
+    () => window.matchMedia("(max-width: 767px)").matches,
+    () => true
+  );
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], isMobile ? [0, 0] : [0, 200]);
   const scale = useTransform(scrollYProgress, [0, 1], isMobile ? [1, 1] : [1, 1.06]);
