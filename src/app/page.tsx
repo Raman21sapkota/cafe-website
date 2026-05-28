@@ -31,7 +31,7 @@ function HeroSection() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.06]);
 
   return (
-    <section ref={ref} className="relative h-screen overflow-hidden">
+    <section ref={ref} className="relative min-h-dvh overflow-hidden">
       <div className="absolute inset-0 pointer-events-none z-10 opacity-[0.04]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E")`,
         backgroundSize: "256px 256px",
@@ -142,7 +142,7 @@ function ExperiencesSection() {
               viewport={{ once: true, margin: "-150px" }}
               className={`flex flex-col ${exp.align === "right" ? "md:flex-row-reverse" : "md:flex-row"} gap-10 md:gap-20 items-center`}
             >
-              <motion.div variants={scaleIn} className="w-full md:w-[55%] overflow-hidden">
+              <motion.div variants={scaleIn} className="w-full md:w-[55%] overflow-hidden rounded-2xl">
                 <img src={exp.image} alt={exp.title} className="w-full h-[450px] md:h-[600px] object-cover hover:scale-105 transition-all duration-1000" />
               </motion.div>
               <motion.div
@@ -170,7 +170,7 @@ function StorySection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="w-full md:w-[55%]"
+            className="w-full md:w-[55%] overflow-hidden rounded-2xl"
           >
             <motion.img variants={scaleIn} src="/assets/gallery/486496971-1216110510522174-181479589556670364-n.jpg" alt="Plated Cafe interior" className="w-full h-[500px] md:h-[650px] object-cover" />
           </motion.div>
@@ -251,7 +251,7 @@ function GallerySection() {
               <img
                 src={src}
                 alt=""
-                className="w-full h-auto object-cover hover:scale-[1.03] transition-all duration-1000"
+                className="w-full h-auto object-cover hover:scale-[1.03] transition-all duration-1000 rounded-xl"
               />
             </motion.div>
           ))}

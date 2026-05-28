@@ -79,7 +79,7 @@ export default function Location() {
               viewport={{ once: true, margin: "-100px" }}
               className="w-full md:w-1/2"
             >
-              <motion.div variants={scaleIn} className="w-full h-[400px] md:h-[500px]">
+              <motion.div variants={scaleIn} className="w-full h-[400px] md:h-[500px] overflow-hidden rounded-2xl">
                 <iframe
                   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCatA9aqqRlz-q30ryAqrUfm88Hag2DaPQ&q=79%2F81+Point+Lonsdale+Rd%2C+Point+Lonsdale%2C+VIC++3225%2C+Australia&zoom=15"
                   width="100%"
